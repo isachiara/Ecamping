@@ -23,10 +23,9 @@
                 <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" />
 
                 <p:outputLabel for="cpf" value="Confirmar CPF"/>
-                <p:inputText id="cpf" value="#{bookingBean.user.cpf}"/>
+                <p:inputText id="cpf" value="#{bookingBean.cpf}"/>
                 <p:commandButton value="Realizar Reserva" action="#{bookingBean.criarReserva()}"></p:commandButton>       
             </h:panelGrid>
         </h:form>
-        <p:outputLabel value="#{bookingBean.camping.name}"/>
     </h:body>
 </html>

@@ -9,6 +9,7 @@ import com.ecamping.entidade.Booking;
 import com.ecamping.entidade.Camping;
 import com.ecamping.entidade.User;
 import com.ecamping.service.BookingService;
+import com.ecamping.service.UserService;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -27,11 +28,13 @@ public class BookingBean implements Serializable{
 
     private List<Booking> reservas;
     private User user;
+    private String cpf;
     private Camping camping;
     private Booking booking;
     String reservaEfetuada = "Reserva efetuada com sucesso!";
     
-    UserBean userb;
+    @EJB
+    private UserService userService;
 
     @EJB
     private BookingService bookingService;
@@ -39,9 +42,12 @@ public class BookingBean implements Serializable{
     @PostConstruct
     public void iniciar() {
         booking = bookingService.create();
+        user = userService.create();
+        camping = new Camping();
     }
 
     public void criarReserva() {
+        this.user = userService.getUserPorCPF(cpf);
         this.booking.setUser(this.user);
         this.booking.setCamping(this.camping);
         this.bookingService.persistence(this.booking);
@@ -94,4 +100,22 @@ public class BookingBean implements Serializable{
     public void setBooking(Booking booking) {
         this.booking = booking;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getReservaEfetuada() {
+        return reservaEfetuada;
+    }
+
+    public void setReservaEfetuada(String reservaEfetuada) {
+        this.reservaEfetuada = reservaEfetuada;
+    }
+    
+    
 }

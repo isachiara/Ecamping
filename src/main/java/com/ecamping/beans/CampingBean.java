@@ -15,13 +15,14 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author isabella
  */
 @ManagedBean(name = "campingBean")
-@RequestScoped
+@SessionScoped
 public class CampingBean implements Serializable {
 
     private Camping camping;

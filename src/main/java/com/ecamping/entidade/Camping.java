@@ -94,7 +94,7 @@ public class Camping implements BaseEntity, Serializable
     private Address address; 
     
     
-    @OneToMany(mappedBy="camping", cascade = CascadeType.ALL, targetEntity = Booking.class,
+    @OneToMany(mappedBy="camping", cascade = CascadeType.PERSIST, targetEntity = Booking.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Booking> booking;
     
