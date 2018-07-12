@@ -1,0 +1,8 @@
+com/ecamping/test/Teste.class
+com/ecamping/test/RatingTest.class
+com/ecamping/test/CampingTest.class
+com/ecamping/test/BookingTest.class
+com/ecamping/test/UserTest.class
+com/ecamping/test/CommentTest.class
+com/ecamping/test/BeanValidationTest.class
+com/ecamping/test/DbUnitUtil.class
