@@ -33,24 +33,26 @@ import javax.validation.constraints.NotNull;
 @NamedQueries(
     {
         @NamedQuery(
-                name = "Rating.AllRating",
+                name = Rating.ALL_RATINGS,
                 query = "SELECT r FROM Rating r"
         )
     }
 )
 public class Rating extends Feedback implements Serializable{
     
+    public static final String ALL_RATINGS = "AllRating";
+    
     @NotNull
     @Column(name="INT_VALUE", nullable = false)
     private int value;
     
     @NotNull(message = "O usuario precisa ser definido!")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="ID_USER", referencedColumnName = "ID", nullable = false)
     private User user;
     
     @NotNull(message = "O camping precisa ser definido!")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name="ID_CAMPING", referencedColumnName = "ID", nullable = false)
     private Camping camping;
 

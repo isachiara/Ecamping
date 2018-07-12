@@ -21,21 +21,26 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries(
         {
             @NamedQuery(
-                    name = "Endereco.PorId",
-                    query = "SELECT a FROM Address a WHERE a.id LIKE ?1"
+                    name = Address.ENDERECO_POR_CEP,
+                    query = "SELECT a FROM Address a WHERE a.cep LIKE ?1"
                      
             ),
             @NamedQuery(
-                    name = "Endereco.PorCidade",
+                    name = Address.ENDERECO_POR_CIDADE,
                     query = "SELECT a FROM Address a WHERE a.cidade LIKE ?1"                    
             ),
             @NamedQuery(
-                    name = "Endereco.PorEstado",
+                    name = Address.ENDERECO_POR_ESTADO,
                     query = "SELECT a FROM Address a WHERE a.estado LIKE ?1"                    
             )
         }
 )
+
 public class Address implements Serializable {
+    
+    public static final String ENDERECO_POR_CEP = "EnderecoPorCep";
+    public static final String ENDERECO_POR_CIDADE = "EnderecoPorCidade";
+    public static final String ENDERECO_POR_ESTADO = "EnderecoPorEstado";
     
     @Id
     @Column(name = "ID")

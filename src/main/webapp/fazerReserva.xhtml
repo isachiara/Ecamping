@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/menu.xhtml" />
+        <p:fieldset legend="Fazer uma Reserva">
+            <h:form id="form_booking">
+                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                    <p:outputLabel for="user" value="Selecione o campista:" />
+                    <p:selectOneMenu id="user" value="#{bookingBean.user}" style="width:225px" required="true" converter="com.ecamping.entidade.SimpleConverter" requiredMessage="Valor é obrigatório" >
+                        <f:selectItem itemLabel="Nome do Usuario - CPF" itemValue="" />
+                        <f:selectItems value="#{listaCampistas.campistas}" var="campista" itemLabel="#{campista.name} - #{campista.cpf}" itemValue="#{campista}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel for="camping" value="Selecione o camping:" />
+                    <p:selectOneMenu id="camping" value="#{bookingBean.camping}" style="width:225px" required="true" converter="com.ecamping.entidade.SimpleConverter" requiredMessage="Valor é obrigatório" >
+                        <f:selectItem itemLabel="Nome do Camping" itemValue="" />
+                        <f:selectItems value="#{campingBean.campings}" var="camping" itemLabel="#{camping.name}" itemValue="#{camping}"/>
+                    </p:selectOneMenu>
+               
+
+                    <p:outputLabel for="tent" value="Selecione o tipo de barraca:" />
+                    <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}">
+                        <f:selectItem itemLabel="INDIVIDUAL" itemValue="INDIVIDUAL" />
+                        <f:selectItem itemLabel="DUPLEX" itemValue="DUPLEX" />
+                    </p:selectOneRadio>
+
+                    <p:outputLabel for="bookingData" value="Data:" />
+                    <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" />
+                    <p:commandButton ajax="false" value="Confirmar" action="#{bookingBean.criarReserva()}"/>
+                 <h:message for="user" errorStyle="color:darkred;font-size:11px;"></h:message> 
+                 <h:message for="camping" errorStyle="color:darkred;font-size:11px;"></h:message> 
+                 
+                </h:panelGrid>
+            </h:form>
+        </p:fieldset>
+    </h:body>
+</html>
+

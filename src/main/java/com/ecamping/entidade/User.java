@@ -24,26 +24,37 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 @Table(name = "tb_user")
 @Access(AccessType.FIELD)
-@NamedNativeQueries(
-        {
-            @NamedNativeQuery(
-                    name = "User.PorEmail",
-                    query = "SELECT TXT_NAME FROM tb_user WHERE TXT_EMAIL LIKE ?1"
-            ),
-            @NamedNativeQuery(
-                    name = "User.OrdemNome",
-                    query = "SELECT TXT_NAME FROM tb_user ORDER BY TXT_NAME"
-            ),            
-        }
-)
-
 @NamedQueries(
         {
             @NamedQuery(
-                    name = "User.PorNome",
+                    name = User.USER_POR_EMAIL,
+                    query = "SELECT u FROM User u WHERE u.email LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = User.USER_POR_ID,
+                    query = "SELECT u FROM User u WHERE u.id LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = User.USER_POR_LETRA,
+                    query ="SELECT u FROM User u WHERE u.name LIKE ?1 ORDER BY u.id"
+            )
+            ,            
+            @NamedQuery(
+                    name = User.USER_POR_NOME,
                     query = "SELECT u FROM User u WHERE u.name LIKE ?1 ORDER BY u.id"
-                    
-            )            
+            )
+            ,            
+            @NamedQuery(
+                    name = User.ALL_USERS,
+                    query = "SELECT u FROM User u"
+            )
+            ,            
+            @NamedQuery(
+                    name = User.USER_POR_CPF,
+                    query = "SELECT u FROM User u WHERE u.cpf LIKE ?1"
+            )
         }
 )
 
@@ -59,45 +70,51 @@ import org.hibernate.validator.constraints.br.CPF;
                     @ColumnResult(name = "name", type = String.class)
             ,
                     @ColumnResult(name = "email", type = String.class)
-            }
+        }
 )
-public class User implements Serializable {
+public class User implements BaseEntity, Serializable {
+
+    public static final String USER_POR_NOME = "UserPorNome";
+    public static final String USER_POR_EMAIL = "UserPorEmail";
+    public static final String USER_POR_LETRA = "UserPorLetra";
+    public static final String USER_POR_ID = "UserPorId";
+    public static final String ALL_USERS = "AllUsers";
+    public static final String USER_POR_CPF = "UserPorCpf";
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @NotNull
-    @CPF(message="{invalid.cpf}")
+    @CPF(message = "{invalid.cpf}")
     @Column(name = "TXT_CPF", nullable = false, length = 14, unique = true)
     private String cpf;
-    
+
     @NotNull
-    @Size(min = 5, max=200)
+    @Size(min = 5, max = 200)
     @Column(name = "TXT_NAME", nullable = false, length = 255)
     private String name;
-    
-    
+
     @NotNull
-    @Email(message="{invalid.email}")
+    @Email(message = "{invalid.email}")
     @Column(name = "TXT_EMAIL", nullable = false, length = 70)
     private String email;
-    
+
     @NotBlank
-    @Pattern(regexp = "((?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", message="{invalid.password})")
+    @Pattern(regexp = "((?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", message = "{invalid.password})")
     @Column(name = "TXT_PASSWORD", nullable = false, length = 20)
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,
             targetEntity = Booking.class, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Booking> booking;
-    
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, targetEntity = Rating.class,
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, targetEntity = Rating.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Rating> rating;
-    
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, targetEntity = Comment.class,
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, targetEntity = Comment.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comment;
 
@@ -141,7 +158,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-
     public List<Booking> getBooking() {
         return booking;
     }
@@ -165,12 +181,12 @@ public class User implements Serializable {
     public void setComment(List<Comment> comment) {
         this.comment = comment;
     }
-    
+
     public void addRating(Rating rating) {
         this.rating.add(rating);
         rating.setUser(this);
     }
-    
+
     public void addComment(Comment comment) {
         this.comment.add(comment);
         comment.setUser(this);

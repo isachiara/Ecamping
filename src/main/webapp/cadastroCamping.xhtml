@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Ecamping Index</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/menu.xhtml" />
+        <p:fieldset legend="Cadastro Camping">
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel value="Nome:" for="name"></p:outputLabel>
+                    <p:inputText id="name" value="#{campingBean.camping.name}" title="Nome" required="true" requiredMessage="The NOME field is required."></p:inputText>
+
+                    <p:outputLabel value="Telefone: " for="telefone"/>
+                    <p:inputText id="telefone" value="#{campingBean.camping.phone}" title="Telefone" required="true" requiredMessage="The NOME field is required."/>
+
+                    <p:outputLabel value="Informações:" for="info"/>         
+                    <p:inputText id="info" value="#{campingBean.camping.info}" title="Info" required="true" requiredMessage="The INFORMAÇÃO field is required."/>
+
+                    <p:outputLabel value="CEP:" for="cep"/>
+                    <p:inputText id="cep" value="#{campingBean.endereco.cep}" title="CEP" required="true" requiredMessage="The CEP field is required."/> 
+
+                    <p:outputLabel value="Estado:" for="estado"/>
+                    <p:inputText id="estado" value="#{campingBean.endereco.estado}" title="Estado" required="true" requiredMessage="The CEP field is required."/> 
+
+                    <p:outputLabel value="Cidade" for="cidade"/>
+                    <p:inputText id="cidade" value="#{campingBean.endereco.cidade}" title="Cidade" required="true" requiredMessage="The CIDADE field is required."/> 
+
+                    <p:outputLabel value="Bairro:" for="bairro"/>
+                    <p:inputText id="bairro" value="#{campingBean.endereco.bairro}" title="Bairro" required="true" requiredMessage="The CIDADE field is required."/> 
+
+                    <p:outputLabel value="Rua:" for="rua"/>
+                    <p:inputText id="rua" value="#{campingBean.endereco.rua}" title="rua" required="true" requiredMessage="The CEP field is required."/> 
+
+                    <p:outputLabel value="Numero: " for="numero"/>
+                    <p:inputText id="numero" value="#{campingBean.endereco.numero}" title="numero" required="true" requiredMessage="The CIDADE field is required."/> 
+
+
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" action="#{campingBean.salvar()}"></p:commandButton>
+            </h:form>
+        </p:fieldset>
+    </h:body>
+</html>

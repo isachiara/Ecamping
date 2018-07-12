@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Página de Visita do Camping</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/menu.xhtml" />
+        <ui:repeat value="#{campingBean.campings}" var="camping">
+            <p:panel id="camping" header="#{camping.name}" toggleable="true" toggleSpeed="500"  widgetVar="panel" style="margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:outputLabel value="Telefone:"/>
+                    <h:outputText value="#{camping.phone}" />
+                    <p:outputLabel value="Informações:"/>
+                    <h:outputText value="#{camping.info}" />
+                    <h:form>
+                        <p:commandButton value="Fazer Reserva" action="#{bookingBean.MudarDePagina(camping)}"/>
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+        </ui:repeat>
+
+
+    </h:body>
+</html>
+

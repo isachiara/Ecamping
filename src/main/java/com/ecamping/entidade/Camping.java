@@ -41,19 +41,32 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries(
         {
             @NamedQuery(
-                    name ="Camping.PorNome",
+                    name = Camping.CAMPING_POR_NOME,
                     query = "SELECT c FROM Camping c WHERE c.name LIKE ?1"
                     
             ),
             @NamedQuery(
-                    name = "Camping.SemReservas",
+                    name = Camping.CAMPING_SEM_RESERVAS,
                     query = "SELECT c FROM Camping c WHERE c.booking IS EMPTY"
                     
+            ),
+            @NamedQuery(
+                    name = Camping.CAMPINGS_NUM_ESTADO,
+                    query = "SELECT COUNT(c) FROM Camping c WHERE c.address.estado = ?1"
+                    
+            ),
+            @NamedQuery(
+                    name = Camping.ALL_CAMPING,
+                    query = "SELECT c FROM Camping c"
             )
         }
 )
-public class Camping implements Serializable 
+public class Camping implements BaseEntity, Serializable 
 {
+    public static final String CAMPING_POR_NOME = "CampingPorNome";
+    public static final String CAMPING_SEM_RESERVAS = "CampingSemReservas";
+    public static final String CAMPINGS_NUM_ESTADO = "CampingsNumEstado";
+    public static final String ALL_CAMPING = "AllCamping";
 
     @Id
     @Column(name = "ID")

@@ -5,6 +5,7 @@
  */
 package com.ecamping.entidade;
 
+import com.ecamping.validator.ValidateTent;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,17 +38,29 @@ import javax.validation.constraints.NotNull;
 @NamedQueries(
         {
             @NamedQuery(
-                    name = "Booking.PorUser",
+                    name = Booking.BOOKING_POR_USER,
                     query = "SELECT b FROM Booking b WHERE b.user.name LIKE ?1"
             ),
             @NamedQuery(
-                    name = "Booking.ReservaUnica",
-                    query = "SELECT b FROM Booking b WHERE b.user.cpf LIKE ?1 AND b.camping.name LIKE ?2"
+                    name = Booking.BOOKING_POR_NOME_CAMPING,
+                    query = "SELECT b FROM Booking b WHERE b.camping.name LIKE ?1 "
+            ),
+            @NamedQuery(
+                    name = Booking.BOOKING_POR_DATA,
+                    query = "SELECT b FROM Booking  b WHERE b.bookingDate BETWEEN ?1 AND ?2"
+            ),
+            @NamedQuery(
+                    name = Booking.BOOKING_POR_ID,
+                    query = "SELECT b FROM Booking b WHERE b.id LIKE ?1"
             )
         }
 )
 public class Booking implements Serializable {
-
+    public static final String BOOKING_POR_USER = "BookingPorUser";
+    public static final String BOOKING_POR_NOME_CAMPING = "BookingPorNomeCamping";
+    public static final String BOOKING_POR_DATA = "BookingPorData";
+    public static final String BOOKING_POR_ID = "BookingPorId";
+    
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,11 +75,11 @@ public class Booking implements Serializable {
     @Column(name = "TXT_TENT", nullable = true)
     private String tent;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "ID_CAMPING", referencedColumnName = "ID", nullable = false)
     private Camping camping;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "ID_USER", referencedColumnName = "ID", nullable = false)
     private User user;
 
