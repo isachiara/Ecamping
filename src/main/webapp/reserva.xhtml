@@ -12,6 +12,7 @@
         <ui:include src="/menu.xhtml" />
 
         <h:form id="form_booking">
+            <p:growl id="growl" life="3000" />
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="tent" value="Selecione o tipo de barraca:" />
                 <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}">
@@ -20,7 +21,7 @@
                 </p:selectOneRadio>
 
                 <p:outputLabel for="bookingData" value="Data:" />
-                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" />
+                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" pattern="yyyy-MM-dd"/>
 
                 <p:outputLabel for="cpf" value="Confirmar CPF"/>
                 <p:inputText id="cpf" value="#{bookingBean.cpf}"/>

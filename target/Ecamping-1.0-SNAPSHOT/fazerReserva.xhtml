@@ -46,7 +46,7 @@
                         <h:message for="bookingData" errorStyle="color:darkred;font-size:11px;"></h:message> 
                     </p:outputLabel>
                     <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" 
-                                requiredMessage="Campo DATA é obrigatório"/>
+                                requiredMessage="Campo DATA é obrigatório" pattern="yyyy-MM-dd"/>
                     <p:commandButton ajax="false" value="Confirmar" action="#{bookingBean.criarReserva()}"/>
                
                 </h:panelGrid>

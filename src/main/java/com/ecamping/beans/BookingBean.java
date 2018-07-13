@@ -9,14 +9,19 @@ import com.ecamping.entidade.Booking;
 import com.ecamping.entidade.Camping;
 import com.ecamping.entidade.User;
 import com.ecamping.service.BookingService;
+import com.ecamping.service.CampingService;
 import com.ecamping.service.UserService;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -38,21 +43,42 @@ public class BookingBean implements Serializable{
 
     @EJB
     private BookingService bookingService;
+    
+    @EJB
+    private CampingService campingService;
 
     @PostConstruct
     public void iniciar() {
         booking = bookingService.create();
         user = userService.create();
-        camping = new Camping();
+        camping = campingService.create();
+        cpf = new String();
+    }
+    
+    public User pegarCampista(String cpf){
+        User campista = userService.getUserPorCPF(cpf);
+        return campista;
     }
 
     public void criarReserva() {
-        this.user = userService.getUserPorCPF(cpf);
-        this.booking.setUser(this.user);
-        this.booking.setCamping(this.camping);
-        this.bookingService.persistence(this.booking);
-        this.booking = new Booking();
+        
+        Booking newBooking = new Booking();
+        User userBooking = userService.getUserPorCPF(this.cpf);
+        newBooking.setUser(userBooking);
+        newBooking.setCamping(this.camping);
+        newBooking.setBookingDate(this.booking.getBookingDate());
+        newBooking.setTent(this.booking.getTent());
+        addMessage(newBooking.getBookingDate()+ " "+newBooking.getTent());
+        this.bookingService.persistence(newBooking);
         //return reservaEfetuada;
+    }
+    
+    private Date getData(Integer dia, Integer mes, Integer ano) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, ano);
+        c.set(Calendar.MONTH, mes);
+        c.set(Calendar.DAY_OF_MONTH, dia);
+        return c.getTime();
     }
 
     public List<Booking> getReservas() {
@@ -115,6 +141,11 @@ public class BookingBean implements Serializable{
 
     public void setReservaEfetuada(String reservaEfetuada) {
         this.reservaEfetuada = reservaEfetuada;
+    }
+    
+    public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
     
     

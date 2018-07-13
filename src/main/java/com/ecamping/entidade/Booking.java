@@ -66,20 +66,21 @@ public class Booking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+
     @Future(message="{invalid.bookingDate}")
-    @Column(name = "DT_BOOKINGDATE")
     @Temporal(TemporalType.DATE)
+    @Column(name = "DT_BOOKINGDATE")
     private Date bookingDate;
     
     @ValidateTent
     @Column(name = "TXT_TENT", nullable = true)
     private String tent;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_CAMPING", referencedColumnName = "ID", nullable = false)
     private Camping camping;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_USER", referencedColumnName = "ID", nullable = false)
     private User user;
 
