@@ -50,7 +50,12 @@ public class BookingBean implements Serializable {
     public void iniciar() {
         booking = bookingService.create();
         user = userService.create();
-        camping = campingService.create();
+        if (camping == null) {
+            camping = campingService.create();
+        }else{
+            camping = getCamping();
+        }
+
         cpf = new String();
     }
 
