@@ -20,7 +20,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -29,7 +28,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean(name = "bookingBean")
 @SessionScoped
-public class BookingBean implements Serializable{
+public class BookingBean implements Serializable {
 
     private List<Booking> reservas;
     private User user;
@@ -37,13 +36,13 @@ public class BookingBean implements Serializable{
     private Camping camping;
     private Booking booking;
     String reservaEfetuada = "Reserva efetuada com sucesso!";
-    
+
     @EJB
     private UserService userService;
 
     @EJB
     private BookingService bookingService;
-    
+
     @EJB
     private CampingService campingService;
 
@@ -54,25 +53,28 @@ public class BookingBean implements Serializable{
         camping = campingService.create();
         cpf = new String();
     }
-    
-    public User pegarCampista(String cpf){
+
+    public User pegarCampista(String cpf) {
         User campista = userService.getUserPorCPF(cpf);
         return campista;
     }
 
     public void criarReserva() {
-        
+
         Booking newBooking = new Booking();
         User userBooking = userService.getUserPorCPF(this.cpf);
         newBooking.setUser(userBooking);
-        newBooking.setCamping(this.camping);
+        System.out.println("E o capeta é" + camping.getName());
+        Camping campingBooking = campingService.getCampingsPorNome(camping.getName());
+        newBooking.setCamping(campingBooking);
         newBooking.setBookingDate(this.booking.getBookingDate());
         newBooking.setTent(this.booking.getTent());
-        addMessage(newBooking.getBookingDate()+ " "+newBooking.getTent());
+        addMessage(newBooking.getBookingDate() + " " + newBooking.getTent());
         this.bookingService.persistence(newBooking);
+
         //return reservaEfetuada;
     }
-    
+
     private Date getData(Integer dia, Integer mes, Integer ano) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, ano);
@@ -86,7 +88,8 @@ public class BookingBean implements Serializable{
     }
 
     public String MudarDePagina(Camping camping) {
-        this.camping = camping;
+        setCamping(camping);
+        System.out.println("FUNCIONA??? " + this.camping.getName());
         return "reserva?faces-redirect=true";
     }
 
@@ -118,7 +121,6 @@ public class BookingBean implements Serializable{
         this.user = user;
     }
 
-    
     public Booking getBooking() {
         return booking;
     }
@@ -142,11 +144,10 @@ public class BookingBean implements Serializable{
     public void setReservaEfetuada(String reservaEfetuada) {
         this.reservaEfetuada = reservaEfetuada;
     }
-    
+
     public void addMessage(String summary) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
-    
-    
+
 }

@@ -15,17 +15,18 @@
             <p:growl id="growl" life="3000" />
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                 <p:outputLabel for="tent" value="Selecione o tipo de barraca:" />
-                <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}">
+                <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}" required="true" >
                     <f:selectItem itemLabel="INDIVIDUAL" itemValue="INDIVIDUAL" />
                     <f:selectItem itemLabel="DUPLEX" itemValue="DUPLEX" />
                 </p:selectOneRadio>
 
                 <p:outputLabel for="bookingData" value="Data:" />
-                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" pattern="yyyy-MM-dd"/>
+                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" required="true"  pattern="yyyy-MM-dd"/>
 
                 <p:outputLabel for="cpf" value="Confirmar CPF"/>
-                <p:inputText id="cpf" value="#{bookingBean.cpf}"/>
-                <p:commandButton value="Realizar Reserva" action="#{bookingBean.criarReserva()}"></p:commandButton>       
+                <p:inputText id="cpf" value="#{bookingBean.cpf}" required="true" />
+                <p:commandButton value="Realizar Reserva" action="#{bookingBean.criarReserva()}"
+                                 onclick="return confirm('Confirma reserva?')" ></p:commandButton>       
             </h:panelGrid>
         </h:form>
     </h:body>
