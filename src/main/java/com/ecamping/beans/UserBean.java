@@ -33,11 +33,12 @@ public class UserBean implements Serializable {
         usuario = userService.create();
     }
 
-    public String salvar() {
+    public void salvar() {
         this.userService.persistence(this.usuario);
         this.usuario = new User();
         addMessage("Usuario cadastrado com sucesso!");
-        return "index?faces-redirect=true";
+        
+        this.usuario = null;
     }
 
     public User getUsuario() {

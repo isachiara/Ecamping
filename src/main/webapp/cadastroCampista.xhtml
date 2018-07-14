@@ -16,7 +16,7 @@
             <h:form>
                 <p:panelGrid columns="2">
                     <p:outputLabel value="Nome:" for="name">
-                        <h:message for="name" errorStyle="color:darkred;font-size:11px;"></h:message>
+                        <h:message for="name" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="name" value="#{userBean.usuario.name}" title="Nome" required="true" 
                                  requiredMessage="O campo NOME é obrigatório."
@@ -24,7 +24,7 @@
                                  />
 
                     <p:outputLabel value="CPF:" for="cpf">
-                        <h:message for="cpf" errorStyle="color:darkred;font-size:11px;"></h:message>
+                        <h:message for="cpf" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="cpf" value="#{userBean.usuario.cpf}" title="CPF" required="true" 
                                  requiredMessage="O campo CPF é obrigatório."
@@ -32,7 +32,7 @@
                                  />
 
                     <p:outputLabel value="Email:" for="email">
-                        <h:message for="email" errorStyle="color:darkred;font-size:11px;"></h:message>
+                        <h:message for="email" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="email" value="#{userBean.usuario.email}" title="Email" required="true" 
                                  requiredMessage="O campo EMAIL é obrigatório."
@@ -40,7 +40,7 @@
                                  /> 
 
                     <p:outputLabel value="Senha:" for="password">
-                        <h:message for="password" errorStyle="color:darkred;font-size:11px;"></h:message>
+                        <h:message for="password" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:password id="password" value="#{userBean.usuario.password}" title="Senha" required="true" 
                                 requiredMessage="O campo SENHA é obrigatório ."

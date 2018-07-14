@@ -40,12 +40,15 @@ public class CampingBean implements Serializable {
         endereco = new Address();
     }
 
-    public String salvar() {
+    public void salvar() {
         this.camping.setAddress(this.endereco);
         this.campingService.persistence(this.camping);
         this.camping = new Camping();
         addMessage("Camping cadastrado com sucesso!");
-        return "index?faces-redirect=true";
+        
+        this.endereco = null;
+        this.camping = null;
+
     }
 
     public List<Camping> getCampings() {

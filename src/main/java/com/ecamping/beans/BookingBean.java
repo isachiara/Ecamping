@@ -59,7 +59,7 @@ public class BookingBean implements Serializable {
         return campista;
     }
 
-    public String criarReserva() {
+    public void criarReserva() {
 
         Booking newBooking = new Booking();
         User userBooking = userService.getUserPorCPF(this.cpf);
@@ -68,11 +68,15 @@ public class BookingBean implements Serializable {
         newBooking.setCamping(campingBooking);
         newBooking.setBookingDate(this.booking.getBookingDate());
         newBooking.setTent(this.booking.getTent());
-        addMessage(newBooking.getBookingDate() + " " + newBooking.getTent());
         this.bookingService.persistence(newBooking);
-
+        
+        this.booking.setBookingDate(null);
+        this.booking.setTent("");
+        this.booking.setUser(null);
+        this.cpf = "";
+        
         addMessage("Reserva cadastrado com sucesso!");
-        return "index?faces-redirect=true";
+
     }
 
     private Date getData(Integer dia, Integer mes, Integer ano) {

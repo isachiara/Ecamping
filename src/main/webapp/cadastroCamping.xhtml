@@ -12,65 +12,66 @@
         <ui:include src="/menu.xhtml" />
         <p:fieldset legend="Cadastro Camping">
             <h:form>
+                <p:growl id="growl" life="9000" />
                 <p:panelGrid columns="2">
 
                     <p:outputLabel value="Nome:" for="name">
-                        <h:message for="name" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="name" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="name" value="#{campingBean.camping.name}" title="Nome" required="true" 
                                  requiredMessage="O campo NOME é obrigatório."
                                  placeholder="Ex.:Camping 01"></p:inputText>
 
                     <p:outputLabel value="Telefone: " for="telefone">
-                        <h:message for="telefone" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="telefone" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="telefone" value="#{campingBean.camping.phone}" title="Telefone" required="true" 
                                  requiredMessage="O campo TELEFONE é obrigatório."
                                  placeholder="Ex.:(00) 00000-0000"/>
 
                     <p:outputLabel value="Informações:" for="info">
-                        <h:message for="info" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="info" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputTextarea id="info" value="#{campingBean.camping.info}" title="Info" required="true" 
                                  requiredMessage="O campo INFORMAÇÕES é obrigatório."/>
 
                     <p:outputLabel value="CEP:" for="cep">
-                        <h:message for="cep" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="cep" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="cep" value="#{campingBean.endereco.cep}" title="CEP" required="true" 
                                  requiredMessage="O campo CEP é obrigatório."
                                  placeholder="Ex.:00000-00"/> 
 
                     <p:outputLabel value="Estado:" for="estado">
-                        <h:message for="estado" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="estado" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                      <p:inputText id="estado" value="#{campingBean.endereco.estado}" title="Estado" required="true" 
                                  requiredMessage="O campo ESTADO é obrigatório."
                                  placeholder="Ex.:Pernambuco"/> 
 
                     <p:outputLabel value="Cidade" for="cidade">
-                        <h:message for="cidade" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="cidade" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel> 
                     <p:inputText id="cidade" value="#{campingBean.endereco.cidade}" title="Cidade" required="true" 
                                  requiredMessage="O campo CIDADE é obrigatório."
                                  placeholder="Ex.:Recife"/> 
 
                     <p:outputLabel value="Bairro:" for="bairro">
-                        <h:message for="bairro" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="bairro" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="bairro" value="#{campingBean.endereco.bairro}" title="Bairro" required="true" 
                                  requiredMessage="O campo BAIRRO é obrigatório."
                                  placeholder="Ex.:Piedade"/> 
 
                     <p:outputLabel value="Rua:" for="rua">
-                        <h:message for="rua" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="rua" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="rua" value="#{campingBean.endereco.rua}" title="rua" required="true" 
                                  requiredMessage="O campo RUA é obrigatório."
                                  placeholder="Ex.:Av. Cândido Ferreira"/> 
 
                     <p:outputLabel value="Numero: " for="numero">
-                        <h:message for="numero" errorStyle="color:darked;font-size:11px;"></h:message>
+                        <h:message for="numero" errorStyle="color:darked;font-size:14px;"></h:message>
                     </p:outputLabel>
                     <p:inputText id="numero" value="#{campingBean.endereco.numero}" title="numero" required="true" 
                                  requiredMessage="O campo NÚMERO é obrigatório."
@@ -78,8 +79,9 @@
 
 
                 </p:panelGrid>
-                <p:commandButton value="Cadastrar" action="#{campingBean.salvar()}"
-                                 onclick="return confirm('Confirma o cadastro desse camping?')" ajax="false">
+                <p:commandButton value="Cadastrar" actionListener="#{campingBean.salvar()}"
+                                 onclick="return confirm('Confirma o cadastro desse camping?')" 
+                                 id="nonAjax" ajax="false">
                 </p:commandButton>
             </h:form>
         </p:fieldset>
