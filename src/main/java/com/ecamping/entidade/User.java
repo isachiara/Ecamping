@@ -106,7 +106,7 @@ public class User implements BaseEntity, Serializable {
     @Column(name = "TXT_PASSWORD", nullable = false, length = 20)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST,
             targetEntity = Booking.class, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Booking> booking;
 

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Página de Reserva</title>
+    </h:head>
+    <h:body>
+        <ui:include src="/menu.xhtml" />
+
+        <h:form id="form_booking">
+            <p:growl id="growl" life="3000" />
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                <p:outputLabel for="tent" value="Selecione o tipo de barraca:" />
+                <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}" required="true" >
+                    <f:selectItem itemLabel="INDIVIDUAL" itemValue="INDIVIDUAL" />
+                    <f:selectItem itemLabel="DUPLEX" itemValue="DUPLEX" />
+                </p:selectOneRadio>
+
+                <p:outputLabel for="bookingData" value="Data:" />
+                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" required="true"  pattern="yyyy-MM-dd"/>
+
+                <p:outputLabel for="cpf" value="Confirmar CPF"/>
+                <p:inputText id="cpf" value="#{bookingBean.cpf}" required="true" />
+                <p:commandButton value="Realizar Reserva" action="#{bookingBean.criarReserva()}"
+                                 onclick="return confirm('Confirma reserva?')" ></p:commandButton>       
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <!-- Tela Inicial-->
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaReservas</from-outcome>
+            <to-view-id>/reservasCamping.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+    <!-- Tela Cadastro Campistas-->
+    <navigation-rule>
+        <from-view-id>/cadastroCampista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCampista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCampista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCampista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCampista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+    <!-- Tela Cadastro Campings-->
+    <navigation-rule>
+        <from-view-id>/cadastroCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/cadastroCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+    <!-- Tela Lista Campistas-->
+    <navigation-rule>
+        <from-view-id>/listaCampistas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampistas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampistas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampistas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampistas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+    <!-- Tela Lista Campings-->
+    <navigation-rule>
+        <from-view-id>/listaCampings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/listaCampings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    
+</faces-config>

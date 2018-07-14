@@ -13,8 +13,11 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -37,11 +40,15 @@ public class CampingBean implements Serializable {
         endereco = new Address();
     }
 
-    public String salvar() {
+    public void salvar() {
         this.camping.setAddress(this.endereco);
         this.campingService.persistence(this.camping);
         this.camping = new Camping();
-        return "index?faces-redirect=true";
+        addMessage("Camping cadastrado com sucesso!");
+        
+        this.endereco = null;
+        this.camping = null;
+
     }
 
     public List<Camping> getCampings() {
@@ -65,4 +72,8 @@ public class CampingBean implements Serializable {
         this.camping = camping;
     }
 
+    public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }

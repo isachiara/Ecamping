@@ -15,21 +15,44 @@
         <p:fieldset legend="Cadastro Campista">
             <h:form>
                 <p:panelGrid columns="2">
-                    <p:outputLabel value="Nome:" for="name"/>
-                    <p:inputText id="name" value="#{userBean.usuario.name}" title="Nome" required="true" requiredMessage="The Nome field is required."/>
+                    <p:outputLabel value="Nome:" for="name">
+                        <h:message for="name" errorStyle="color:darked;font-size:14px;"></h:message>
+                    </p:outputLabel>
+                    <p:inputText id="name" value="#{userBean.usuario.name}" title="Nome" required="true" 
+                                 requiredMessage="O campo NOME é obrigatório."
+                                 placeholder="Ex.:Frida Khalo"
+                                 />
 
-                    <p:outputLabel value="CPF:" for="cpf"/>         
-                    <p:inputText id="cpf" value="#{userBean.usuario.cpf}" title="CPF" required="true" requiredMessage="The CPF field is required."/>
+                    <p:outputLabel value="CPF:" for="cpf">
+                        <h:message for="cpf" errorStyle="color:darked;font-size:14px;"></h:message>
+                    </p:outputLabel>
+                    <p:inputText id="cpf" value="#{userBean.usuario.cpf}" title="CPF" required="true" 
+                                 requiredMessage="O campo CPF é obrigatório."
+                                 placeholder="Ex.:999.999.999-99"
+                                 />
 
-                    <p:outputLabel value="Email:" for="email"/>
-                    <p:inputText id="email" value="#{userBean.usuario.email}" title="Email" required="true" requiredMessage="The Email field is required."/> 
+                    <p:outputLabel value="Email:" for="email">
+                        <h:message for="email" errorStyle="color:darked;font-size:14px;"></h:message>
+                    </p:outputLabel>
+                    <p:inputText id="email" value="#{userBean.usuario.email}" title="Email" required="true" 
+                                 requiredMessage="O campo EMAIL é obrigatório."
+                                 placeholder="Ex.:frida_khalo@gmail.com"
+                                 /> 
 
-                    <p:outputLabel value="Senha:" for="password"/>
-                    <p:password id="password" value="#{userBean.usuario.password}" title="Senha" required="true" requiredMessage="The Senha field is required."/>
+                    <p:outputLabel value="Senha:" for="password">
+                        <h:message for="password" errorStyle="color:darked;font-size:14px;"></h:message>
+                    </p:outputLabel>
+                    <p:password id="password" value="#{userBean.usuario.password}" title="Senha" required="true" 
+                                requiredMessage="O campo SENHA é obrigatório ."
+                                />
                 </p:panelGrid>
-                <p:commandButton value="Cadastrar" action="#{userBean.salvar()}"/>
+
+                <p:commandButton value="Cadastrar" action="#{userBean.salvar()}" 
+                                 onclick="return confirm('Confirma o cadastro desse usuário?')" ajax="false">
+            </p:commandButton>
+                           
             </h:form>
+
         </p:fieldset>
     </h:body>
 </html>
-

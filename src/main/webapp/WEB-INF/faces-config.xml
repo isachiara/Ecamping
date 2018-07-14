@@ -47,13 +47,7 @@
             <to-view-id>/reservasCamping.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>fazerReserva</from-outcome>
-            <to-view-id>/fazerReserva.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     
     <!-- Tela Cadastro Campistas-->
     <navigation-rule>
@@ -91,13 +85,7 @@
             <to-view-id>/listaCampings.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>fazerReserva</from-outcome>
-            <to-view-id>/fazerReserva.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     
     <!-- Tela Cadastro Campings-->
     <navigation-rule>
@@ -135,13 +123,7 @@
             <to-view-id>/listaCampings.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>fazerReserva</from-outcome>
-            <to-view-id>/fazerReserva.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     
     <!-- Tela Lista Campistas-->
     <navigation-rule>
@@ -179,13 +161,7 @@
             <to-view-id>/listaCampings.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>fazerReserva</from-outcome>
-            <to-view-id>/fazerReserva.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     
     <!-- Tela Lista Campings-->
     <navigation-rule>
@@ -223,12 +199,6 @@
             <to-view-id>/listaCampings.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>fazerReserva</from-outcome>
-            <to-view-id>/fazerReserva.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
     
 </faces-config>

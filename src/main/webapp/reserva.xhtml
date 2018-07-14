@@ -12,21 +12,33 @@
         <ui:include src="/menu.xhtml" />
 
         <h:form id="form_booking">
+            <p:growl id="growl" life="9000" />
             <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                <p:outputLabel for="tent" value="Selecione o tipo de barraca:" />
-                <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}">
+                <p:outputLabel for="tent" value="Selecione o tipo de barraca:" >
+                    <h:message for="tent" errorStyle="color:darked;font-size:14px;"></h:message>
+                </p:outputLabel>
+                <p:selectOneRadio id="tent" value="#{bookingBean.booking.tent}" required="true"
+                                   requiredMessage="O campo BARRACA é obrigatório.">
                     <f:selectItem itemLabel="INDIVIDUAL" itemValue="INDIVIDUAL" />
                     <f:selectItem itemLabel="DUPLEX" itemValue="DUPLEX" />
                 </p:selectOneRadio>
 
-                <p:outputLabel for="bookingData" value="Data:" />
-                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" showOn="button" />
+                <p:outputLabel for="bookingData" value="Data:" >
+                    <h:message for="bookingData" errorStyle="color:darked;font-size:14px;"></h:message>
+                </p:outputLabel>
+                <p:calendar id="bookingData" value="#{bookingBean.booking.bookingDate}" 
+                            showOn="button" required="true"  pattern="yyyy-MM-dd"
+                            requiredMessage="O campo DATA é obrigatório."/>
 
-                <p:outputLabel for="cpf" value="Confirmar CPF"/>
-                <p:inputText id="cpf" value="#{bookingBean.user.cpf}"/>
-                <p:commandButton value="Realizar Reserva" action="#{bookingBean.criarReserva()}"></p:commandButton>       
+                <p:outputLabel for="cpf" value="Confirmar CPF">
+                    <h:message for="cpf" errorStyle="color:darked;font-size:14px;"></h:message>
+                </p:outputLabel>
+                <p:inputText id="cpf" value="#{bookingBean.cpf}" required="true"
+                             requiredMessage="O campo CPF é obrigatório."/>
+                <p:commandButton value="Realizar Reserva" actionListener="#{bookingBean.criarReserva()}"
+                                 onclick="return confirm('Confirma reserva?')" 
+                                 id="nonAjax" ajax="false"></p:commandButton>       
             </h:panelGrid>
         </h:form>
-        <p:outputLabel value="#{bookingBean.camping.name}"/>
     </h:body>
 </html>

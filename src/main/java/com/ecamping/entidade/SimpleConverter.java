@@ -25,6 +25,7 @@ public class SimpleConverter implements Converter {
         return null;
     }
 
+    @Override
     public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 
         if (value != null

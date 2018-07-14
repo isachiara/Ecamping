@@ -66,9 +66,10 @@ public class Booking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+
     @Future(message="{invalid.bookingDate}")
-    @Column(name = "DT_BOOKINGDATE")
     @Temporal(TemporalType.DATE)
+    @Column(name = "DT_BOOKINGDATE")
     private Date bookingDate;
     
     @ValidateTent
