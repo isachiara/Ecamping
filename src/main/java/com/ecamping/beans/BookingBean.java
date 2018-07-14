@@ -50,12 +50,7 @@ public class BookingBean implements Serializable {
     public void iniciar() {
         booking = bookingService.create();
         user = userService.create();
-        if (camping == null) {
-            camping = campingService.create();
-        }else{
-            camping = getCamping();
-        }
-
+        camping = (Camping) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("camping");
         cpf = new String();
     }
 
@@ -64,12 +59,11 @@ public class BookingBean implements Serializable {
         return campista;
     }
 
-    public void criarReserva() {
+    public String criarReserva() {
 
         Booking newBooking = new Booking();
         User userBooking = userService.getUserPorCPF(this.cpf);
         newBooking.setUser(userBooking);
-        System.out.println("E o capeta é" + camping.getName());
         Camping campingBooking = campingService.getCampingsPorNome(camping.getName());
         newBooking.setCamping(campingBooking);
         newBooking.setBookingDate(this.booking.getBookingDate());
@@ -77,7 +71,8 @@ public class BookingBean implements Serializable {
         addMessage(newBooking.getBookingDate() + " " + newBooking.getTent());
         this.bookingService.persistence(newBooking);
 
-        //return reservaEfetuada;
+        addMessage("Reserva cadastrado com sucesso!");
+        return "index?faces-redirect=true";
     }
 
     private Date getData(Integer dia, Integer mes, Integer ano) {
@@ -93,8 +88,7 @@ public class BookingBean implements Serializable {
     }
 
     public String MudarDePagina(Camping camping) {
-        setCamping(camping);
-        System.out.println("FUNCIONA??? " + this.camping.getName());
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("camping", camping);
         return "reserva?faces-redirect=true";
     }
 

@@ -24,7 +24,7 @@ import javax.faces.context.FacesContext;
  * @author isabella
  */
 @ManagedBean(name = "campingBean")
-@SessionScoped
+@RequestScoped
 public class CampingBean implements Serializable {
 
     private Camping camping;
