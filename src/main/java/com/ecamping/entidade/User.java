@@ -6,10 +6,14 @@
 package com.ecamping.entidade;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -106,6 +110,10 @@ public class User implements BaseEntity, Serializable {
     @Column(name = "TXT_PASSWORD", nullable = false, length = 20)
     private String password;
 
+    @Size(max = 45)
+    @Column(name = "TXT_SAL")
+    private String sal;
+    
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST,
             targetEntity = Booking.class, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Booking> booking;
@@ -118,6 +126,34 @@ public class User implements BaseEntity, Serializable {
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comment;
 
+    @PrePersist
+    public void gerarHash() {
+        try {
+            gerarSal();
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            setPassword(sal + password);
+            digest.update(password.getBytes(Charset.forName("UTF-8")));
+            setPassword(Base64.getEncoder().encodeToString(digest.digest()));
+        } catch (NoSuchAlgorithmException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private void gerarSal() throws NoSuchAlgorithmException {
+        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
+        byte[] randomBytes = new byte[32];
+        secureRandom.nextBytes(randomBytes);
+        setSal(Base64.getEncoder().encodeToString(randomBytes));
+    }
+    
+     public String getSal() {
+        return sal;
+    }
+
+    public void setSal(String sal) {
+        this.sal = sal;
+    }
+    
     public Long getId() {
         return id;
     }
