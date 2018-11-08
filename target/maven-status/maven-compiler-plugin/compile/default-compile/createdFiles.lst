@@ -23,6 +23,7 @@ com/ecamping/beans/MensagemBean.class
 com/ecamping/beans/CampingBean.class
 com/ecamping/entidade/Comment_.class
 com/ecamping/service/AddressService.class
+com/ecamping/beans/LoginBean.class
 com/ecamping/validator/ValidatorTent.class
 com/ecamping/entidade/Comment.class
 com/ecamping/entidade/Booking_.class

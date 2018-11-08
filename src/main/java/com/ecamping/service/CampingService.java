@@ -43,6 +43,11 @@ public class CampingService extends Service<Camping> {
         query.setParameter(1, camping.getName());
         return !query.getResultList().isEmpty();
     }
+    
+    /*@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+    public boolean loginCamping(@NotNull Camping camping){
+        
+    }*/
 
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Camping> getCampingsSemReserva() {

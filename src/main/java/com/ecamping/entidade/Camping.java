@@ -45,6 +45,7 @@ import org.hibernate.validator.constraints.NotBlank;
                     query = "SELECT c FROM Camping c WHERE c.name LIKE ?1"
                     
             ),
+           
             @NamedQuery(
                     name = Camping.CAMPING_SEM_RESERVAS,
                     query = "SELECT c FROM Camping c WHERE c.booking IS EMPTY"

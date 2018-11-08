@@ -30,6 +30,9 @@ import org.hibernate.validator.constraints.br.CPF;
 @Access(AccessType.FIELD)
 @NamedQueries(
         {
+            @NamedQuery(name = User.User_findByEmailSenha,
+                    query = "SELECT c FROM User c WHERE c.email = :email AND c.password = :password"
+            ),
             @NamedQuery(
                     name = User.USER_POR_EMAIL,
                     query = "SELECT u FROM User u WHERE u.email LIKE ?1"
@@ -40,6 +43,10 @@ import org.hibernate.validator.constraints.br.CPF;
                     query = "SELECT u FROM User u WHERE u.id LIKE ?1"
             )
             ,
+            @NamedQuery(
+                    name = User.USER_LOGIN,
+                    query = "SELECT u FROM User u WHERE u.cpf LIKE ?1 AND u.password LIKE ?2"
+            ),
             @NamedQuery(
                     name = User.USER_POR_LETRA,
                     query ="SELECT u FROM User u WHERE u.name LIKE ?1 ORDER BY u.id"
@@ -84,6 +91,8 @@ public class User implements BaseEntity, Serializable {
     public static final String USER_POR_ID = "UserPorId";
     public static final String ALL_USERS = "AllUsers";
     public static final String USER_POR_CPF = "UserPorCpf";
+    public static final String USER_LOGIN = "LoginUsuario";
+    public static final String User_findByEmailSenha = "UserfindByEmailSenha";
 
     @Id
     @Column(name = "ID")

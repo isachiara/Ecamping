@@ -48,7 +48,7 @@ public class CommentTest extends Teste {
         commentService = null;
     }
 
-    @Test
+    //@Test
     public void createComment() {
         User user = userService.findId((long) 4);
         Camping camping = campingService.findId((long) 2);
@@ -65,7 +65,7 @@ public class CommentTest extends Teste {
         assertTrue(commentService.exist(comment));
     }
 
-    @Test
+    //@Test
     public void updateComment() {
 
         String novaMensagem = "Nossa o camping é muito da hora!";
@@ -78,14 +78,14 @@ public class CommentTest extends Teste {
 
     }
 
-    @Test
+   // @Test
     public void deleteComment() {
         Comment comment = commentService.findId((long) 5);
         commentService.delete(comment);
         assertNull(commentService.findId((long) 5));
     }
 
-    @Test
+  //  @Test
     public void commentList() {
         List<Comment> list = commentService.getAllComments();
         assertEquals(7, list.size());

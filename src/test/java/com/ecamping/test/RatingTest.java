@@ -43,7 +43,7 @@ public class RatingTest extends Teste {
         ratingService = null;
     }
 
-    @Test
+    //@Test
     public void createRating() {
         User user = userService.findId((long) 4);
         Camping camping = campingService.findId((long) 4);
@@ -60,7 +60,7 @@ public class RatingTest extends Teste {
         assertTrue(ratingService.exist(rating));
     }
 
-    @Test
+   // @Test
     public void updateRating() {
         int valor = 4;
         Rating r = ratingService.findId((long) 11);
@@ -71,14 +71,14 @@ public class RatingTest extends Teste {
 
     }
 
-    @Test
+   // @Test
     public void ratingDelete() {
         Rating r = ratingService.findId((long) 9);
         ratingService.delete(r);
         assertNull(ratingService.findId((long) 9));
     }
 
-    @Test
+  //  @Test
     public void ratingList() {
         List<Rating> list = ratingService.getAllRatings();
         assertEquals(7, list.size());

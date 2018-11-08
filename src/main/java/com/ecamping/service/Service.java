@@ -47,7 +47,7 @@ public abstract class Service<T> {
         return true;
     }
 
-    public void persistence(@Valid T entidade) {
+    public void persistence(T entidade) {
         if (!exist(entidade)) {
             entityManager.persist(entidade);
         }
