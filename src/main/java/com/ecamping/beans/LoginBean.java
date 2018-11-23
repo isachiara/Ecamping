@@ -8,16 +8,14 @@ package com.ecamping.beans;
 import com.ecamping.entidade.User;
 import com.ecamping.service.SessionContext;
 import com.ecamping.service.UserService;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.sound.midi.SysexMessage;
 
 /**
  *
@@ -38,6 +36,7 @@ public class LoginBean {
     }
 
     public String Autenticar() {
+        System.out.println("Chamado");
         User usuario = new User();
         List<User> usuarios = userService.getAllUsers();
         for (User u : usuarios) {

@@ -277,6 +277,51 @@
             <to-view-id>/loginCampista.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+   <!--- perfil camping -->
+    <navigation-rule>
+        <from-view-id>/perfilCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCamping</from-outcome>
+            <to-view-id>/cadastroCamping.xhtml</to-view-id>
+        </navigation-case>  
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cadastroCampista</from-outcome>
+            <to-view-id>/cadastroCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampistas</from-outcome>
+            <to-view-id>/listaCampistas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilCamping.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listaCampings</from-outcome>
+            <to-view-id>/listaCampings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilCampingxhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>loginCampista</from-outcome>
+            <to-view-id>/loginCampista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 
     
 </faces-config>

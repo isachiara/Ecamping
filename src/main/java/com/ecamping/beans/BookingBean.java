@@ -95,6 +95,7 @@ public class BookingBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("camping", camping);
         return "reserva?faces-redirect=true";
     }
+   
 
     public void setReservas(String camping) {
         this.reservas = bookingService.getBookingPorCamping(camping);

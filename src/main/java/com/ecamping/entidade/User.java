@@ -115,11 +115,10 @@ public class User implements BaseEntity, Serializable {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "((?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", message = "{invalid.password})")
-    @Column(name = "TXT_PASSWORD", nullable = false, length = 20)
+    @Column(name = "TXT_PASSWORD", nullable = false, length = 60)
     private String password;
 
-    @Size(max = 45)
+    @Size(max = 60)
     @Column(name = "TXT_SAL")
     private String sal;
     
